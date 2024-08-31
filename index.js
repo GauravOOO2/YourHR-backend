@@ -9,7 +9,14 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+
+
+// Configure CORS
+app.use(cors({
+    origin: 'https://your-hr-frontend-eight.vercel.app', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Connect to the database
 connectDB();
